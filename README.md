@@ -9,10 +9,10 @@ Welcome to Epigene Labs' Engineering Challenge. The goal of this challenge is to
 
 ## How to proceed ?
 
-1 - Clone the repo;
-2 - Select the track you prefer (#1 is more backend oriented, #2 is more frontend oriented), or feel more confortable with;
-3 - Resolve issues one by one (try to have the clearest commit history as possible)
-4 - Once you are done, send an email to leonard@epigenelabs.com, we will organize a meeting afterward.
+1. Clone the repo;
+2. Select the track you prefer (#1 is more backend oriented, #2 is more frontend oriented), or feel more confortable with;
+3. Resolve issues one by one (try to have the clearest commit history as possible)
+4. Once you are done, send an email to leonard@epigenelabs.com, we will organize a meeting afterward.
 
 The interview will be the opportunity for you to expose your solution to the challenge you picked, but also an opportunity to learn more about Epigene Labs, and to meet more engineers. For us, the most important aspect will be ti evaluate how much we could work together as a team. Also, do not hesitate to suggest some improvements for this test, we remain a very young start up and will love to hear your feedback. 
 
@@ -22,15 +22,48 @@ There is a `backend` folder where you will find a FastAPI python app. The App al
 
 The API allows the user to create a Geneset, create some Genes, and add genes to a particular Genesets.
 
-## Running the backend
+## Install and Run
 
-Install `poetry`
+The following should be run under `/backend` folder.
 
-Run `poetry run uvicorn main:app --reload`
+### 1 - Install python
+
+Install `python 3.8` with [pyenv](https://github.com/pyenv/pyenv)
+
+```
+brew install pyenv
+pyenv install 3.8
+pyenv local 3.8
+```
+
+Copy/paste at the following command at the end of your `.zshrc` or `.bash_rc`
+
+```bash
+eval "$(pyenv init -)"
+```
+### 2 - Install poetry
+
+We need to install [poetry](https://python-poetry.org/docs/#installation) to manage python dependencies.
+
+You can make sure poetry is correctly installed by running 
+
+````
+poetry version
+````
+
+Then, install dependencies `poetry install`.
+
+
+### 3 - Launch
+
+
+````
+poetry run uvicorn main:app --reload
+````
 
 You should now have an API running locally on port `8000`. The documentation of that API should be available at `localhost:8000/docs`
 
-## Track Backend
+## Track Backend 
 
 In that track, we will explore the API and try improve it.
 
