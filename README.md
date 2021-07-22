@@ -32,7 +32,7 @@ You should now have an API running locally on port `8000`. The documentation of 
 
 ## Track Backend
 
-In that track, we will explore the API and try improve it.
+In that track, we will explore the API and try to improve it.
 
 ### Level 0
 
@@ -72,7 +72,7 @@ The idea here is not to implement any solution. Just think of some improvements 
 
 ## Track Frontend
 
-In that track, we will explore the API and try improve it.
+In that track, we will create an application that consumes the existing API.
 
 ### Level 0
 
@@ -82,7 +82,7 @@ Create a couple of Genesets to get more familiar with it.
 
 ### Level 1
 
-Set up an React App from scratch. That retrieves and display the list of geneset available. The user should be able to see the list of genesets with the geneset's title and the list of genes inside it.
+Set up a React App from scratch. That retrieves and displays the list of genesets available. The user should be able to see the list of genesets with the geneset's title and the list of genes inside it.
 
 ### Level 2
 
