@@ -10,19 +10,23 @@ Welcome to Epigene Labs' Engineering Challenge. The goal of this challenge is to
 ## How to proceed ?
 
 1. Clone the repo;
-2. Select the track you prefer (#1 is more backend oriented, #2 is more frontend oriented), or feel more confortable with;
-3. Resolve issues one by one (try to have the clearest commit history as possible)
+2. Select the track you prefer (🐍 is more backend oriented, 🌈 is more frontend oriented), or feel more confortable with;
+3. Resolve issues one by one of the selected track only (try to have the clearest commit history as possible)
 4. Once you are done, send an email to leonard@epigenelabs.com, we will organize a meeting afterward.
 
-The interview will be the opportunity for you to expose your solution to the challenge you picked, but also an opportunity to learn more about Epigene Labs, and to meet more engineers. For us, the most important aspect will be ti evaluate how much we could work together as a team. Also, do not hesitate to suggest some improvements for this test, we remain a very young start up and will love to hear your feedback. 
+⚠️ We don't expect you to spend more than 1 to 4 hours in that challenge, and don't expect you to finish the challenge as well.
 
-## Repo description
+The interview will be the opportunity for you to expose your solution to the challenge you picked, but also an opportunity to learn more about Epigene Labs, and to meet more engineers. For us, the most important aspect will be to evaluate how much we could work together as a team. 
+
+Also, do not hesitate to suggest some improvements for this test, we remain a very young start up and will love to hear your feedback. 
+
+## Repository description
 
 There is a `backend` folder where you will find a FastAPI python app. The App allows a user to manage what we call a Geneset, which is basically a list of known Genes that, put together, have a particular meaning or a particular impact on a specific protein, disease.
 
 The API allows the user to create a Geneset, create some Genes, and add genes to a particular Genesets.
 
-## Install and Run
+## Install and run the API
 
 The following should be run under `/backend` folder.
 
@@ -63,9 +67,9 @@ poetry run uvicorn main:app --reload
 
 You should now have an API running locally on port `8000`. The documentation of that API should be available at `localhost:8000/docs`
 
-## Track Backend 
+## 🐍 Track Backend
 
-In that track, we will explore the API and try improve it.
+In that track, we will explore the API and try to improve it.
 
 ### Level 0
 
@@ -103,9 +107,9 @@ Let's be real, this API isn't best in class. How do you think we could improve i
 The idea here is not to implement any solution. Just think of some improvements we could discuss during the interview.
 
 
-## Track Frontend
+## 🌈 Track Frontend 
 
-In that track, we will explore the API and try improve it.
+In that track, we will create an application that consumes the existing API.
 
 ### Level 0
 
@@ -115,7 +119,7 @@ Create a couple of Genesets to get more familiar with it.
 
 ### Level 1
 
-Set up an React App from scratch. That retrieves and display the list of geneset available. The user should be able to see the list of genesets with the geneset's title and the list of genes inside it.
+Set up a React App from scratch. That retrieves and displays the list of genesets available. The user should be able to see the list of genesets with the geneset's title and the list of genes inside it.
 
 ### Level 2
 
