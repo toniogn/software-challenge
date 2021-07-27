@@ -18,11 +18,16 @@ def get_db():
     finally:
         db.close()
 
-
 @app.get("/genesets", response_model=List[schemas.Geneset])
 def read_all_genesets(db: Session = Depends(get_db)):
     genesets = crud.get_genesets(db)
     return genesets
+
+@app.get("/genesets/search/{pattern}", response_model=List[schemas.Geneset])
+def read_match_genesets(pattern: str, db: Session = Depends(get_db)):
+    genesets = crud.get_geneset_by_title(db, pattern)
+    return genesets
+
 
 @app.get("/genesets/{geneset_id}", response_model=schemas.Geneset)
 def read_geneset(geneset_id: int, db: Session = Depends(get_db)):

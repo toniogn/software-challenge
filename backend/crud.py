@@ -17,11 +17,8 @@ def update_geneset(db: Session, geneset_id: int):
 
 
 
-def get_geneset_by_title(db: Session, title: str):
-
-    return db.query(Geneset).filter(Geneset.title == title).first()
-
-
+def get_geneset_by_title(db: Session, pattern: str):
+    return db.query(Geneset).filter(Geneset.title.like( "%" + pattern + "%")).all()
 
 
 def get_genesets(db: Session, skip: int = 0, limit: int = 100):

@@ -92,7 +92,14 @@ Update the API with a way to allow a user to search for genes.
 
 ### Level 3
 
-Now we have thousands of users. 
+We like to be able to search Geneset by title.Let's say you have a Geneset with title `Great Genes`, you could search and retrieve it with: 
+
+````
+127.0.0.1:8000/genesets/search/Great
+````
+Make sure it works as expected.
+
+Now, we have thousands of users. 
 
 Run `poetry run python populate.py` to populate the database and simulate the number of users. 
 
