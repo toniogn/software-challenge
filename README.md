@@ -96,7 +96,7 @@ Now we have thousands of users.
 
 Run `poetry run python populate.py` to populate the database and simulate the number of users. 
 
-Let's check again the endpoint that allow a user to retrieves the full list of genesets. It's getting slower and slower right ? 
+Let's check again the endpoint that allow a user to retrieves the full list of genesets. The output doesn't look good, and it's getting slower right ? 
 
 Suggest a way to improve it.
 

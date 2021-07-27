@@ -18,12 +18,8 @@ def get_db():
     finally:
         db.close()
 
-db = SessionLocal()
 
-db_geneset = crud.create_geneset(db, schemas.GenesetCreate(title="some title"))
-crud.create_geneset_item(db, schemas.GeneCreate(name="some gene"), db_geneset.id)
-
-@app.get("/genesets/", response_model=List[schemas.Geneset])
+@app.get("/genesets", response_model=List[schemas.Geneset])
 def read_all_genesets(db: Session = Depends(get_db)):
     genesets = crud.get_genesets(db)
     return genesets
