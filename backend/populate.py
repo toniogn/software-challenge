@@ -13,6 +13,7 @@ db = SessionLocal()
 
 for k in range(10000):
     geneset = schemas.GenesetCreate(title=f"Geneset {k}",genes=random.sample(GENES, 6))
+    print(f"Currently populating with geneset {geneset.title}")
     crud.create_geneset_with_genes(db, geneset)
 
 
