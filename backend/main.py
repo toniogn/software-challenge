@@ -31,13 +31,13 @@ def read_match_genesets(pattern: str, db: Session = Depends(get_db)):
 
 @app.get("/genesets/{geneset_id}", response_model=schemas.Geneset)
 def read_geneset(geneset_id: int, db: Session = Depends(get_db)):
-
     return crud.get_geneset(db, geneset_id)
 
-@app.put("/genesets/{geneset_id}")
-def update_genesets(geneset_id: int, db: Session = Depends(get_db)):
 
-    return crud.get_geneset(db, geneset_id)
+@app.put("/genesets/{geneset_id}", response_model=schemas.Geneset)
+def update_genesets(geneset_id: int, geneset: schemas.GenesetCreate, db: Session = Depends(get_db)):
+    return crud.update_geneset(db, geneset_id, geneset.title, geneset.genes)
+
 
 @app.post("/genesets")
 def create_geneset(geneset: schemas.GenesetCreate, db: Session = Depends(get_db)):

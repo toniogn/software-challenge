@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from typing import List
 
 
 from models import Gene, Geneset
@@ -11,9 +12,17 @@ def get_geneset(db: Session, geneset_id: int):
 
     return db.query(Geneset).filter(Geneset.id == geneset_id).first()
 
-def update_geneset(db: Session, geneset_id: int):
+def update_geneset(db: Session, geneset_id: int, title: str, genes: List[str]):
 
-    return db.query(Geneset).filter(Geneset.id == geneset_id).first()
+    geneset = db.query(Geneset).filter(Geneset.id == geneset_id).first()
+    geneset.title = title
+
+    db.query(Gene).filter(Gene.geneset_id == geneset_id).delete()
+    for gene in genes:
+        geneset.genes.append(Gene(name=gene.name))
+
+    db.commit()
+    return geneset
 
 
 

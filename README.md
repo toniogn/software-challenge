@@ -36,8 +36,8 @@ Install `python 3.8` with [pyenv](https://github.com/pyenv/pyenv)
 
 ```
 brew install pyenv
-pyenv install 3.8
-pyenv local 3.8
+pyenv install 3.8.0
+pyenv local 3.8.0
 ```
 
 Copy/paste at the following command at the end of your `.zshrc` or `.bash_rc`
@@ -52,7 +52,7 @@ We need to install [poetry](https://python-poetry.org/docs/#installation) to man
 You can make sure poetry is correctly installed by running 
 
 ````
-poetry version
+poetry --version
 ````
 
 Then, install dependencies `poetry install`.
