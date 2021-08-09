@@ -18,8 +18,8 @@ def update_geneset(db: Session, geneset_id: int, title: str, genes: List[str]):
     geneset.title = title
 
     db.query(Gene).filter(Gene.geneset_id == geneset_id).delete()
-    for gene_name in genes:
-        geneset.genes.append(Gene(name=gene_name))
+    for gene in genes:
+        geneset.genes.append(Gene(name=gene.name))
 
     db.commit()
     return geneset

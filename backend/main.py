@@ -34,9 +34,9 @@ def read_geneset(geneset_id: int, db: Session = Depends(get_db)):
     return crud.get_geneset(db, geneset_id)
 
 
-@app.put("/genesets/update/{geneset_id}", response_model=schemas.Geneset)
-def update_genesets(geneset_id: int, title: str, genes: str, db: Session = Depends(get_db)):
-    return crud.update_geneset(db, geneset_id, title, genes.split(","))
+@app.put("/genesets/{geneset_id}", response_model=schemas.Geneset)
+def update_genesets(geneset_id: int, geneset: schemas.GenesetCreate, db: Session = Depends(get_db)):
+    return crud.update_geneset(db, geneset_id, geneset.title, geneset.genes)
 
 
 @app.post("/genesets")
