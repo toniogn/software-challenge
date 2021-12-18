@@ -25,7 +25,7 @@ def read_all_genesets(db: Session = Depends(get_db)):
 
 @app.get("/genesets/search/{pattern}", response_model=List[schemas.Geneset])
 def read_match_genesets(pattern: str, db: Session = Depends(get_db)):
-    genesets = crud.get_geneset_by_title(db, pattern)
+    genesets = crud.get_geneset_by_pattern_in_title(db, pattern)
     return genesets
 
 
@@ -52,6 +52,12 @@ def create_geneset(
 
 
 @app.get("/genes/{name}", response_model=List[schemas.Gene])
-def read_match_genes(name: str, db: Session = Depends(get_db)):
+def read_genes_by_name(name: str, db: Session = Depends(get_db)):
     gene = crud.get_genes_by_name(db, name)
     return gene
+
+
+@app.get("/genes/search/{pattern}", response_model=List[schemas.Gene])
+def read_match_genes(pattern: str, db: Session = Depends(get_db)):
+    genes = crud.get_genes_by_pattern_in_name(db, pattern)
+    return genes
