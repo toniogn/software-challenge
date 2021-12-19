@@ -86,15 +86,19 @@ class TestApp(unittest.TestCase):
     def test_update_geneset_integrity(self):
         self.client.post("/genesets", json=self.first_geneset_data)
         modified_first_geneset_data = self.first_geneset_data
-        modified_first_geneset_gene_data: dict = modified_first_geneset_data["genes"][0]
-        modified_first_geneset_gene_data.update({
-            "name": "modified_dummy_1"
-        })
-        modified_first_geneset_data.update({
-            "title": "Modified Test Geneset 1",
-            "genes": [modified_first_geneset_gene_data]
-        })
-        response = self.client.put("/genesets/1", json=modified_first_geneset_data)
+        modified_first_geneset_gene_data: dict = modified_first_geneset_data[
+            "genes"
+        ][0]
+        modified_first_geneset_gene_data.update({"name": "modified_dummy_1"})
+        modified_first_geneset_data.update(
+            {
+                "title": "Modified Test Geneset 1",
+                "genes": [modified_first_geneset_gene_data],
+            }
+        )
+        response = self.client.put(
+            "/genesets/1", json=modified_first_geneset_data
+        )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), modified_first_geneset_data)
 
@@ -118,7 +122,9 @@ class TestApp(unittest.TestCase):
         self.client.post("/genesets", json=self.second_geneset_data)
         response = self.client.get("/genes/search/2")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), [self.second_geneset_data["genes"][0]])
+        self.assertEqual(
+            response.json(), [self.second_geneset_data["genes"][0]]
+        )
 
 
 if __name__ == "__main__":
