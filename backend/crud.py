@@ -1,11 +1,15 @@
 from sqlalchemy.orm import Session
 from typing import List
+from fastapi import HTTPException
 from models import Gene, Geneset
 from schemas import GenesetCreate, GeneCreate
 
 
 def get_geneset(db: Session, geneset_id: int):
-    return db.query(Geneset).filter(Geneset.id == geneset_id).first()
+    db_geneset = db.query(Geneset).filter(Geneset.id == geneset_id).first()
+    if not db_geneset:
+        raise HTTPException(404)
+    return db_geneset
 
 
 def get_genesets(db: Session, skip: int = 0, limit: int = 100):
@@ -40,7 +44,7 @@ def create_geneset_with_genes(db: Session, geneset: GenesetCreate):
 def update_geneset(
     db: Session, geneset_id: int, title: str, genes: List[GeneCreate]
 ):
-    db_geneset = db.query(Geneset).filter(Geneset.id == geneset_id).first()
+    db_geneset = get_geneset(db, geneset_id)
     db_geneset.title = title
     db.query(Gene).filter(Gene.geneset_id == geneset_id).delete()
     for gene in genes:
@@ -55,8 +59,11 @@ def get_genes(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Gene).offset(skip).limit(limit).all()
 
 
-def get_genes_by_name(db: Session, name: str):
-    return db.query(Gene).filter(Gene.name == name).all()
+def get_gene_by_name(db: Session, name: str):
+    db_gene = db.query(Gene).filter(Gene.name == name).first()
+    if not db_gene:
+        raise HTTPException(404)
+    return db_gene
 
 
 def get_genes_by_pattern_in_name(db: Session, pattern: str):

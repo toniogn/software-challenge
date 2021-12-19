@@ -1,14 +1,17 @@
 from typing import List
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 import crud, models, schemas
-from database import SessionLocal, engine
+from database import build_database
+
+
+SessionLocal, engine = build_database("app_database")
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Dependency
+
 def get_db():
     db = SessionLocal()
     try:
@@ -51,10 +54,9 @@ def create_geneset(
     return db_geneset.id
 
 
-@app.get("/genes/{name}", response_model=List[schemas.Gene])
-def read_genes_by_name(name: str, db: Session = Depends(get_db)):
-    gene = crud.get_genes_by_name(db, name)
-    return gene
+@app.get("/genes/{name}", response_model=schemas.Gene)
+def read_gene_by_name(name: str, db: Session = Depends(get_db)):
+    return crud.get_gene_by_name(db, name)
 
 
 @app.get("/genes/search/{pattern}", response_model=List[schemas.Gene])
